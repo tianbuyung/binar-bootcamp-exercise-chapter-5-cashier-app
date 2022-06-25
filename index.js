@@ -6,3 +6,14 @@ function getListMenu() {
 }
 
 console.log("data", getListMenu());
+
+function getDetailMenu(id) {
+  const menus = getListMenu();
+  menus.forEach((menu) => {
+    if (menu.id === id) {
+      console.log(menu);
+    }
+  });
+}
+
+getDetailMenu(5);
