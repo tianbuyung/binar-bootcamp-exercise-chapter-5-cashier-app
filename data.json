@@ -1,7 +1,24 @@
 [
-  { "name": "nasi goreng", "price": 14000, "quantity": 2, "id": 1 },
-  { "name": "bakwan", "price": 1000, "quantity": 3, "id": 2 },
-  { "name": "bakso", "price": 13000, "quantity": 1, "id": 3 },
-  { "name": "mie ayam", "price": 12000, "quantity": 1, "id": 4 },
-  { "name": "bakmi goreng", "price": 20000, "quantity": 1, "id": 5 }
+  { "name": "bakwan", "price": 1000, "quantity": 3, "id": 1, "status": true },
+  {
+    "name": "ketoprak",
+    "price": 13500,
+    "quantity": 4,
+    "id": 2,
+    "status": true
+  },
+  {
+    "name": "mie rebus",
+    "price": 7500,
+    "quantity": 2,
+    "id": 3,
+    "status": false
+  },
+  {
+    "name": "nasi empal gentong",
+    "price": 25000,
+    "quantity": 1,
+    "id": 4,
+    "status": true
+  }
 ]
