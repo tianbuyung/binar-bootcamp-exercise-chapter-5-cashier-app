@@ -17,3 +17,19 @@ function getDetailMenu(id) {
 }
 
 getDetailMenu(5);
+
+function addMenu(data) {
+  const menus = getListMenu();
+  menus.push(data);
+  menus.forEach((data, i) => {
+    data.id = i + 1;
+  });
+  console.log("data", menus);
+  fs.writeFileSync("./data.json", JSON.stringify(menus));
+}
+
+addMenu({
+  name: "ketoprak",
+  price: 13500,
+  quantity: 4,
+});
