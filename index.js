@@ -1,35 +1,63 @@
 const fs = require("fs");
 
-function getListMenu() {
-  const listMenu = fs.readFileSync("./data.json", "utf-8");
-  return JSON.parse(listMenu);
+function getPermanentListMenus() {
+  const listMenuAll = fs.readFileSync("./data.json", "utf-8");
+  return JSON.parse(listMenuAll);
 }
 
-console.log("data", getListMenu());
+console.log("data", getPermanentListMenus());
+
+function getListMenus() {
+  const menus = getPermanentListMenus();
+  const menusFiltered = menus.filter((menu) => {
+    return menu.status !== false;
+  });
+  console.log("List menu yang tersedia: ", menusFiltered);
+}
+
+getListMenus();
 
 function getDetailMenu(id) {
-  const menus = getListMenu();
+  const menus = getPermanentListMenus();
   menus.forEach((menu) => {
-    if (menu.id === id) {
-      console.log(menu);
+    if (menu.id === id && menu.status === true) {
+      console.log("Ini adalah menu: ", menu);
     }
   });
 }
 
-getDetailMenu(5);
+getDetailMenu(4);
 
 function addMenu(data) {
-  const menus = getListMenu();
+  const menus = getPermanentListMenus();
   menus.push(data);
-  menus.forEach((data, i) => {
-    data.id = i + 1;
-  });
-  console.log("data", menus);
+  menus[menus.length - 1].id = menus[menus.length - 2].id + 1;
+  menus[menus.length - 1].status = true;
   fs.writeFileSync("./data.json", JSON.stringify(menus));
+  const menusFiltered = menus.filter((menu) => {
+    return menu.status !== false;
+  });
+  console.log("Menu baru adalah: ", menusFiltered);
 }
 
 addMenu({
-  name: "ketoprak",
-  price: 13500,
-  quantity: 4,
+  name: "nasi ayam bakar",
+  price: 23000,
+  quantity: 3,
 });
+
+function deleteMenu(id) {
+  const menus = getPermanentListMenus();
+  menus.forEach((menu) => {
+    if (menu.id === id) {
+      menu.status = false;
+    }
+  });
+  fs.writeFileSync("./data.json", JSON.stringify(menus));
+  const menusFiltered = menus.filter((menu) => {
+    return menu.status !== false;
+  });
+  console.log("Sisa menu yang tersedia adalah: ", menusFiltered);
+}
+
+deleteMenu(1);
