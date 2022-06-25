@@ -1,0 +1,24 @@
+{
+  "name": "cashier-app",
+  "version": "1.0.0",
+  "description": "This app is built to implement CRUD in Node JS - Chapter 5 Topic 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/binar-exercise-fsw23/cashier-app.git"
+  },
+  "author": "Septian Maulana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/binar-exercise-fsw23/cashier-app/issues"
+  },
+  "homepage": "https://gitlab.com/binar-exercise-fsw23/cashier-app#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
