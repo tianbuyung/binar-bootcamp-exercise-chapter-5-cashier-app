@@ -6,7 +6,7 @@ function getPermanentListMenus() {
   return JSON.parse(listMenuAll);
 }
 
-console.log("data", getPermanentListMenus());
+// console.log("data", getPermanentListMenus());
 
 // Read all Menus with status true
 function getListMenus() {
@@ -17,7 +17,11 @@ function getListMenus() {
   console.log("List menu yang tersedia: ", menusFiltered);
 }
 
-getListMenus();
+// getListMenus();
+
+if (Number(process.argv[2]) === 1) {
+  getListMenus();
+}
 
 // Read detail Menu with status true
 function getDetailMenu(id) {
@@ -29,7 +33,11 @@ function getDetailMenu(id) {
   });
 }
 
-getDetailMenu(4);
+// getDetailMenu(4);
+
+if (Number(process.argv[2]) === 2) {
+  getDetailMenu(Number(process.argv[3]));
+}
 
 // Create new menu
 function addMenu(data) {
@@ -44,11 +52,20 @@ function addMenu(data) {
   console.log("Menu baru adalah: ", menusFiltered);
 }
 
-addMenu({
-  name: "nasi ayam bakar",
-  price: 23000,
-  quantity: 3,
-});
+// addMenu({
+//   name: "nasi ayam bakar",
+//   price: 23000,
+//   quantity: 3,
+// });
+
+if (Number(process.argv[2]) === 3) {
+  const newMenu = {
+    name: process.argv[3],
+    price: Number(process.argv[4]),
+    quantity: Number(process.argv[5]),
+  };
+  addMenu(newMenu);
+}
 
 // Delete and Update status of Menu by ID
 function deleteMenu(id) {
@@ -65,10 +82,14 @@ function deleteMenu(id) {
   console.log("Sisa menu yang tersedia adalah: ", menusFiltered);
 }
 
-deleteMenu(1);
+// deleteMenu(1);
+
+if (Number(process.argv[2]) === 4) {
+  deleteMenu(Number(process.argv[3]));
+}
 
 // Update Price Menu by id
-function updatePriceMenu(id, price) {
+function updateMenuPrice(id, price) {
   const menus = getPermanentListMenus();
   menus.forEach((menu) => {
     if (menu.id === id) {
@@ -83,10 +104,13 @@ function updatePriceMenu(id, price) {
   });
 }
 
-updatePriceMenu(2, 14000);
+// updatePriceMenu(2, 14000);
+if (Number(process.argv[2]) === 5) {
+  updateMenuPrice(Number(process.argv[3]), Number(process.argv[4]));
+}
 
 // Update Name Menu by id
-function updatePriceMenu(id, name) {
+function updateMenuName(id, name) {
   const menus = getPermanentListMenus();
   menus.forEach((menu) => {
     if (menu.id === id) {
@@ -101,10 +125,13 @@ function updatePriceMenu(id, name) {
   });
 }
 
-updatePriceMenu(4, "Mie goreng");
+// updatePriceMenu(4, "Mie goreng");
+if (Number(process.argv[2]) === 6) {
+  updateMenuName(Number(process.argv[3]), process.argv[4]);
+}
 
 // Update Quantity Menu by id
-function updatePriceMenu(id, qty) {
+function updateMenuQuantity(id, qty) {
   const menus = getPermanentListMenus();
   menus.forEach((menu) => {
     if (menu.id === id) {
@@ -119,4 +146,7 @@ function updatePriceMenu(id, qty) {
   });
 }
 
-updatePriceMenu(5, 3);
+// updatePriceMenu(5, 3);
+if (Number(process.argv[2]) === 7) {
+  updateMenuQuantity(Number(process.argv[3]), Number(process.argv[4]));
+}

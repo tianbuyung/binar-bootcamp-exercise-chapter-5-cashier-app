@@ -1,5 +1,5 @@
 [
-  { "name": "bakwan", "price": 1000, "quantity": 3, "id": 1, "status": true },
+  { "name": "bakwan", "price": 1000, "quantity": 3, "id": 1, "status": false },
   {
     "name": "ketoprak",
     "price": 13000,
@@ -19,6 +19,20 @@
     "price": 25000,
     "quantity": 1,
     "id": 4,
+    "status": true
+  },
+  {
+    "name": "Nasi dendeng bakar",
+    "price": 26000,
+    "quantity": 2,
+    "id": 5,
+    "status": true
+  },
+  {
+    "name": "Nasi Telor Ceplok",
+    "price": 10000,
+    "quantity": 2,
+    "id": 6,
     "status": true
   }
 ]
