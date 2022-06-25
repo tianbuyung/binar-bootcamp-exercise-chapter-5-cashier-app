@@ -2,7 +2,7 @@
   { "name": "bakwan", "price": 1000, "quantity": 3, "id": 1, "status": true },
   {
     "name": "ketoprak",
-    "price": 13500,
+    "price": 13000,
     "quantity": 4,
     "id": 2,
     "status": true

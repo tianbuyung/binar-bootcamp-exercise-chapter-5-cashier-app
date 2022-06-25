@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+// Read all Menus
 function getPermanentListMenus() {
   const listMenuAll = fs.readFileSync("./data.json", "utf-8");
   return JSON.parse(listMenuAll);
@@ -7,6 +8,7 @@ function getPermanentListMenus() {
 
 console.log("data", getPermanentListMenus());
 
+// Read all Menus with status true
 function getListMenus() {
   const menus = getPermanentListMenus();
   const menusFiltered = menus.filter((menu) => {
@@ -17,6 +19,7 @@ function getListMenus() {
 
 getListMenus();
 
+// Read detail Menu with status true
 function getDetailMenu(id) {
   const menus = getPermanentListMenus();
   menus.forEach((menu) => {
@@ -28,6 +31,7 @@ function getDetailMenu(id) {
 
 getDetailMenu(4);
 
+// Create new menu
 function addMenu(data) {
   const menus = getPermanentListMenus();
   menus.push(data);
@@ -46,6 +50,7 @@ addMenu({
   quantity: 3,
 });
 
+// Delete and Update status of Menu by ID
 function deleteMenu(id) {
   const menus = getPermanentListMenus();
   menus.forEach((menu) => {
@@ -61,3 +66,57 @@ function deleteMenu(id) {
 }
 
 deleteMenu(1);
+
+// Update Price Menu by id
+function updatePriceMenu(id, price) {
+  const menus = getPermanentListMenus();
+  menus.forEach((menu) => {
+    if (menu.id === id) {
+      menu.price = price;
+    }
+  });
+  fs.writeFileSync("./data.json", JSON.stringify(menus));
+  menus.forEach((menu) => {
+    if (menu.id === id && menu.status === true) {
+      console.log("Ini adalah harga menu terbaru: ", menu);
+    }
+  });
+}
+
+updatePriceMenu(2, 14000);
+
+// Update Name Menu by id
+function updatePriceMenu(id, name) {
+  const menus = getPermanentListMenus();
+  menus.forEach((menu) => {
+    if (menu.id === id) {
+      menu.name = name;
+    }
+  });
+  fs.writeFileSync("./data.json", JSON.stringify(menus));
+  menus.forEach((menu) => {
+    if (menu.id === id && menu.status === true) {
+      console.log("Ini adalah nama menu terbaru: ", menu);
+    }
+  });
+}
+
+updatePriceMenu(4, "Mie goreng");
+
+// Update Quantity Menu by id
+function updatePriceMenu(id, qty) {
+  const menus = getPermanentListMenus();
+  menus.forEach((menu) => {
+    if (menu.id === id) {
+      menu.quantity = qty;
+    }
+  });
+  fs.writeFileSync("./data.json", JSON.stringify(menus));
+  menus.forEach((menu) => {
+    if (menu.id === id && menu.status === true) {
+      console.log("Ini adalah jumlah porsi terbaru: ", menu);
+    }
+  });
+}
+
+updatePriceMenu(5, 3);
